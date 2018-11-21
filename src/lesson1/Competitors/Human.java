@@ -46,8 +46,11 @@ public class Human implements Competitor{
         }
     }
 
-    public void showResult(){
-        System.out.println(name + ": " + onDistance);
+    public void showResult() {
+        if (onDistance) {
+            System.out.println(name + " преодолел все препятствия");
+        } else {
+            System.out.println(name + " не смог преодолеть все препятствия");
+        }
     }
-
 }

@@ -18,6 +18,7 @@ public class TeamImpl implements Team {
     public void showResults() {
         System.out.println("========================");
         System.out.println(String.format("Результаты %s", name));
+
         for (Competitor c: competitors){
             c.showResult();
         }

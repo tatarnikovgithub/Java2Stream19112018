@@ -53,8 +53,11 @@ public abstract class Animal implements Competitor{
         }
     }
 
-    public void showResult(){
-        System.out.println(type + " " + name + ": " + onDistance);
+    public void showResult() {
+        if (onDistance) {
+            System.out.println(type + " " + name + " преодолел все препятствия");
+        } else {
+            System.out.println(type + " " + name + " не смог преодолеть все препятствия");
+        }
     }
-
 }
