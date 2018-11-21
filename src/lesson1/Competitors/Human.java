@@ -50,4 +50,10 @@ public class Human implements Competitor{
         System.out.println(name + ": " + onDistance);
     }
 
+    @Override
+    public void showInfo() {
+        System.out.println(String.format("Name: %s, maxRunDistance: %d, maxJumpHeight: %d, maxSwimDistance: %d, onDistance: %b",
+                name, maxRunDistance, maxJumpHeight, maxSwimDistance, onDistance));
+    }
+
 }
