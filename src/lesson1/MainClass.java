@@ -1,26 +1,18 @@
-package lesson1;
+// Tasoev Batradz 22.11.2018
 
-import lesson1.Competitors.*;
-import lesson1.obstacles.Cross;
-import lesson1.obstacles.Obstacle;
-import lesson1.obstacles.Wall;
-import lesson1.obstacles.Water;
+package lesson1;
 
 public class MainClass {
     public static void main(String[] args) {
-        Competitor[] competitors = {new Human("Боб"), new Cat("Барсик"), new Dog("Бобик")};
-        Obstacle[] obstacles = {new Cross(400), new Wall(2), new Water(1)};
+        Team team = new Team("Динамо");
+        System.out.println("Команда " + team.name + " имеет следующий состав:");
+        team.showTeam();
 
-        for (Competitor c: competitors){
-            for (Obstacle o: obstacles){
-                o.doIt(c);
-                if (!c.isOnDistance()) break;
-            }
-        }
-
-        System.out.println("========================");
-        for (Competitor c: competitors){
-            c.showResult();
-        }
+        System.out.println("======================================");
+        Course course = new Course();
+        course.doIt(team);
+        System.out.println("======================================");
+        team.teamResults();
     }
+
 }

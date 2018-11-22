@@ -57,4 +57,10 @@ public abstract class Animal implements Competitor{
         System.out.println(type + " " + name + ": " + onDistance);
     }
 
+    public void showCompetitor(){System.out.println(type + " " + name + " maxRunDistance= "+
+            maxRunDistance+ " maxJumpHeight= " + maxJumpHeight + " maxSwimDistance= " + maxSwimDistance);}
+
+
+
+
 }
