@@ -2,11 +2,16 @@ package lesson1;
 import lesson1.Competitors.*;
 
 public class Team {
-    String name;
-    Competitor[] competitors = {new Human("Боб"), new Cat("Мурка"), new Cat("Барсик"), new Dog("Бобик")};
+    private String name;
+    Competitor[] competitors;
 
-    public Team(String name){
+    public String getName(){return name;}
+    public Competitor[] getCompetitors(){return competitors;}
+
+    public Team(String name, Competitor[] competitors){
         this.name = name;
+        this.competitors = competitors;
+
     }
 
     public void teamResults(){

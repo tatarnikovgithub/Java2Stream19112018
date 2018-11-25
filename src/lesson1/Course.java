@@ -7,10 +7,14 @@ import lesson1.obstacles.Wall;
 import lesson1.obstacles.Water;
 
 public class Course {
-   private Obstacle[] obstacles = {new Cross(400), new Wall(2), new Water(1)};
+   private Obstacle[] obstacles;
+
+   public Course(Obstacle... obstacles){
+       this.obstacles = obstacles;
+   }
 
     public void doIt(Team team){
-        for (Competitor c: team.competitors){
+        for (Competitor c: team.getCompetitors()){
             for (Obstacle o: obstacles){
                 o.doIt(c);
                 if (!c.isOnDistance()) break;
