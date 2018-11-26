@@ -5,47 +5,49 @@ public class MainClass {
 
   public static void main(String[] args) {
     String[][][] test = {
-      { // all ok
+      { // all ok, sum = 16
           {"1", "2", "0", "1"},
           {"1", "2", "0", "1"},
           {"1", "2", "0", "1"},
           {"1", "2", "0", "1"},
       },
-      { // i = 2
+      { // i = 2, sum = 0
         {"1", "2", "0", "1"},
         {"1", "2", "0", "1"},
       },
-      { // j = 3
+      { // j = 3, sum = 8
         {"1", "2", "0", "1"},
         {"1", "2", "0", "1"},
         {"1", "2", "0"},
         {"1", "2", "0", "1"},
       },
-      { // symbols
+      { // symbols, sum = 9
         {"1", "2", "0", "1"},
         {"1", "2", "0", "1"},
         {"1", "ABC", "0", "1"},
         {"1", "2", "0", "1"},
       },
-      { // 2x2 (set ARR_SIZE = 2)
+      { // 2x2 (set ARR_SIZE = 2 -> sum = 6)
         {"1", "2"},
         {"1", "2"},
       },
     };
 
     for (String[][] t : test){
-      int sum;
+      int sum = 0;
 
       try{
         sum = ArraySum.sumArr(t, ARR_SIZE);
-        System.out.printf("Сумма: %d%n%n", sum);
+        //System.out.printf("Сумма: %d%n%n", sum);
       }
-      catch (MyArraySizeException | MyArrayDataException e){
+      //catch (MyArraySizeException | MyArrayDataException e ){
+      catch (MyArrayException e){
         System.out.println(e.getMessage());
+        sum = e.getSum();
       }
-      /*finally {
+      finally {
         System.out.printf("Сумма: %d%n%n", sum);
-      }*/
+      }
     }
   }
 
