@@ -34,18 +34,19 @@ public class MainClass {
     };
 
     for (String[][] t : test){
-      int sum;
+      int sum = 0;
 
       try{
         sum = ArraySum.sumArr(t, ARR_SIZE);
-        System.out.printf("Сумма: %d%n%n", sum);
+        //System.out.printf("Сумма: %d%n%n", sum);
       }
-      catch (MyArraySizeException | MyArrayDataException e){
+      catch (MyArrayException e){
         System.out.println(e.getMessage());
+        sum = e.getSum();
       }
-      /*finally {
+      finally {
         System.out.printf("Сумма: %d%n%n", sum);
-      }*/
+      }
     }
   }
 
