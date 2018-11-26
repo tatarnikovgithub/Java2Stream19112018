@@ -1,9 +1,53 @@
 package lesson2;
 
 public class MainClass {
-    public static void main(String[] args) {
-        throw new MyException("Сгенерировано исключение");
+  private static final int ARR_SIZE = 4; // positive int
+
+  public static void main(String[] args) {
+    String[][][] test = {
+      { // all ok
+          {"1", "2", "0", "1"},
+          {"1", "2", "0", "1"},
+          {"1", "2", "0", "1"},
+          {"1", "2", "0", "1"},
+      },
+      { // i = 2
+        {"1", "2", "0", "1"},
+        {"1", "2", "0", "1"},
+      },
+      { // j = 3
+        {"1", "2", "0", "1"},
+        {"1", "2", "0", "1"},
+        {"1", "2", "0"},
+        {"1", "2", "0", "1"},
+      },
+      { // symbols
+        {"1", "2", "0", "1"},
+        {"1", "2", "0", "1"},
+        {"1", "ABC", "0", "1"},
+        {"1", "2", "0", "1"},
+      },
+      { // 2x2 (set ARR_SIZE = 2)
+        {"1", "2"},
+        {"1", "2"},
+      },
+    };
+
+    for (String[][] t : test){
+      int sum;
+
+      try{
+        sum = ArraySum.sumArr(t, ARR_SIZE);
+        System.out.printf("Сумма: %d%n%n", sum);
+      }
+      catch (MyArraySizeException | MyArrayDataException e){
+        System.out.println(e.getMessage());
+      }
+      /*finally {
+        System.out.printf("Сумма: %d%n%n", sum);
+      }*/
     }
+  }
 
 
 //    static class Person {
@@ -74,7 +118,7 @@ public class MainClass {
 //        FileOutputStream out = new FileOutputStream("1.txt");
 //        out.close();
 //    }
-    }
+  }
 //}
 
 
