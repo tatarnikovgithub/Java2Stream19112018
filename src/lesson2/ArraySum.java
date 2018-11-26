@@ -21,8 +21,8 @@ class ArraySum {
           sum += cell;
         }
         catch (NumberFormatException e){
-          String[] msg = e.getMessage().split("\"", 3);
-          throw new MyArrayDataException(i, j, msg[1]); //msg[msg.length-2]
+          String msg = e.getMessage().split("\"", 3)[1];
+          throw new MyArrayDataException(i, j, msg); //msg[msg.length-2]
         }
       }
     }
