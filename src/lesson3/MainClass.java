@@ -4,82 +4,43 @@ import java.util.*;
 
 public class MainClass {
     public static void main(String[] args) {
-//        ArrayList<String> ali = new ArrayList<>();
-//        ali.add("A");
-//        ali.add("C");
-//        ali.add("A");
-//        ali.add("A");
-//        ali.add("B");
-//        ali.add("B");
-//        System.out.println(ali);
-//        ArrayList<String> ali2 = new ArrayList<>();
-//        ali2.add("W");
-//        ali2.add("W");
-//        ali2.add("W");
-//        ali2.add("A");
-//        ali2.add("B");
-//        ali2.add("B");
-//        ali.add(2, "D");
-//        ali.addAll(1, ali2);
-//        System.out.println(ali);
-//        HashMap<String, String> hm = new HashMap<>();
-//        hm.put("France", "Paris");
-//        hm.put("Russia", "Moscow");
-//        hm.put("England", "London");
-//        System.out.println(hm.get("France"));
-//        System.out.println(hm.get("England"));
 
-////        ArrayList<String> al = new ArrayList<>();
-////        for (int i = 0; i < 1_000_000; i++) {
-////            al.add("Entry #" + i);
-////        }
-//
-//        HashMap<String, Integer> hm = new HashMap<>();
-//        for (int i = 0; i < 1_000_000; i++) {
-//            hm.put("Entry #" + i, i);
-//        }
-//        long time = System.currentTimeMillis();
-////        for (int i = 0; i < 400; i++) {
-////            al.contains("Entry #654882");
-////        }
-//        for (int i = 0; i < 100_000_000; i++) {
-//            hm.get("Entry #654882");
-//        }
-//        System.out.println(System.currentTimeMillis() - time);
-//        String[] str = new String[16];
-//        str[(str.length - 1) & "Java".hashCode()] = "Java";
-//        str[(str.length - 1) & "Home".hashCode()] = "Home";
-//        str[(str.length - 1) & "Core".hashCode()] = "Core";
-//        System.out.println(Arrays.toString(str));
-//        HashSet<String> hs = new HashSet<>();
-//        hs.add("A");
-//        hs.add("A");
-//        hs.add("A");
-//        hs.add("B");
-//        hs.add("B");
-//        hs.add("C");
-//        System.out.println(hs);
-//        TreeSet<String> ts = new TreeSet<>(Arrays.asList("A", "W", "W", "Q", "C", "C", "D"));
-//        System.out.println(ts);
-//        HashMap<String, Integer> hmi = new HashMap<>();
-////        hmi.put("A", 1);
-//        System.out.println(hmi.getOrDefault("A", 9));
+        String[] words = {"собака", "колесо", "мяч", "фонарик", "мяч", "доска", "телевизор", "собака", "мяч", "человек",
+                "дом", "год", "число", "монета", "человек", "доска", "мяч", "луч", "мяч", "собака"};
 
-//        ArrayList<Integer> ali = new ArrayList<>(Arrays.asList(2,2,2,1,2,2,1,1));
-//        Iterator<Integer> iter = ali.iterator();
-//        while(iter.hasNext()){
-//            Integer temp = iter.next();
-//            if (temp == 2) iter.remove();
-//        }
-//        System.out.println(ali);
-
-        HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("A", 1);
-        Iterator<Map.Entry<String, Integer>> iter = hm.entrySet().iterator();
-        while(iter.hasNext()){
-            Map.Entry<String, Integer> e = iter.next();
-            System.out.println(e.getKey() + " " + e.getValue());
+        Map<String, Integer> wordCount = new HashMap<>();
+        for (String w : words) {
+            if (wordCount.containsKey(w)) {
+                wordCount.put(w, wordCount.get(w) + 1);
+            } else {
+                wordCount.put(w, 1);
+            }
         }
 
+        wordCount
+                .entrySet()
+                .forEach(entry -> System.out.println(entry.getKey() + " : " + entry.getValue()));
+
+
+        PhoneBook phoneBook = new PhoneBook();
+
+        phoneBook.add("Иванов", "980-789-145");
+        phoneBook.add("Петров", "897-463-134");
+        phoneBook.add("Сидоров", "748-712-890");
+        phoneBook.add("Иванов", "673-123-867");
+        phoneBook.add("Сидоров", "984-653-019");
+        phoneBook.add("Иванов", "347-019-311");
+        phoneBook.add("Иванов", "874-091-234");
+        phoneBook.add("Петров", "983-123-089");
+        phoneBook.add("Петров", "982-123-345");
+
+        System.out.println("Иванов:");
+        phoneBook.get("Иванов").forEach(s -> System.out.println(s));
+
+        System.out.println("Петров:");
+        phoneBook.get("Петров").forEach(s -> System.out.println(s));
+
+        System.out.println("Сидоров:");
+        phoneBook.get("Сидоров").forEach(s -> System.out.println(s));
     }
 }
