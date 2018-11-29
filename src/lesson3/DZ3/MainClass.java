@@ -17,7 +17,7 @@ public class MainClass {
         pb.add("Петров", "03");
         pb.add("Петров", "04");
         pb.add("Петров", "04");
-        pb.add("Сидоров", "06");
+        pb.add("Сидоров", "07");
 
         pb.printPhoneBookp();
 
