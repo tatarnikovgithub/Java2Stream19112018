@@ -4,82 +4,42 @@ import java.util.*;
 
 public class MainClass {
     public static void main(String[] args) {
-//        ArrayList<String> ali = new ArrayList<>();
-//        ali.add("A");
-//        ali.add("C");
-//        ali.add("A");
-//        ali.add("A");
-//        ali.add("B");
-//        ali.add("B");
-//        System.out.println(ali);
-//        ArrayList<String> ali2 = new ArrayList<>();
-//        ali2.add("W");
-//        ali2.add("W");
-//        ali2.add("W");
-//        ali2.add("A");
-//        ali2.add("B");
-//        ali2.add("B");
-//        ali.add(2, "D");
-//        ali.addAll(1, ali2);
-//        System.out.println(ali);
-//        HashMap<String, String> hm = new HashMap<>();
-//        hm.put("France", "Paris");
-//        hm.put("Russia", "Moscow");
-//        hm.put("England", "London");
-//        System.out.println(hm.get("France"));
-//        System.out.println(hm.get("England"));
+        List<String> arr = Arrays.asList("Russia", "France", "Russia", "Germany", "Russia");
+        Map<String, Integer> arrStatistic = getArrDuplicateStatistic(arr);
 
-////        ArrayList<String> al = new ArrayList<>();
-////        for (int i = 0; i < 1_000_000; i++) {
-////            al.add("Entry #" + i);
-////        }
-//
-//        HashMap<String, Integer> hm = new HashMap<>();
-//        for (int i = 0; i < 1_000_000; i++) {
-//            hm.put("Entry #" + i, i);
-//        }
-//        long time = System.currentTimeMillis();
-////        for (int i = 0; i < 400; i++) {
-////            al.contains("Entry #654882");
-////        }
-//        for (int i = 0; i < 100_000_000; i++) {
-//            hm.get("Entry #654882");
-//        }
-//        System.out.println(System.currentTimeMillis() - time);
-//        String[] str = new String[16];
-//        str[(str.length - 1) & "Java".hashCode()] = "Java";
-//        str[(str.length - 1) & "Home".hashCode()] = "Home";
-//        str[(str.length - 1) & "Core".hashCode()] = "Core";
-//        System.out.println(Arrays.toString(str));
-//        HashSet<String> hs = new HashSet<>();
-//        hs.add("A");
-//        hs.add("A");
-//        hs.add("A");
-//        hs.add("B");
-//        hs.add("B");
-//        hs.add("C");
-//        System.out.println(hs);
-//        TreeSet<String> ts = new TreeSet<>(Arrays.asList("A", "W", "W", "Q", "C", "C", "D"));
-//        System.out.println(ts);
-//        HashMap<String, Integer> hmi = new HashMap<>();
-////        hmi.put("A", 1);
-//        System.out.println(hmi.getOrDefault("A", 9));
-
-//        ArrayList<Integer> ali = new ArrayList<>(Arrays.asList(2,2,2,1,2,2,1,1));
-//        Iterator<Integer> iter = ali.iterator();
-//        while(iter.hasNext()){
-//            Integer temp = iter.next();
-//            if (temp == 2) iter.remove();
-//        }
-//        System.out.println(ali);
-
-        HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("A", 1);
-        Iterator<Map.Entry<String, Integer>> iter = hm.entrySet().iterator();
-        while(iter.hasNext()){
-            Map.Entry<String, Integer> e = iter.next();
-            System.out.println(e.getKey() + " " + e.getValue());
+        if (arrStatistic.get("Russia") != 3 ||
+                arrStatistic.get("France") != 1 ||
+                    arrStatistic.get("Germany") != 1
+        ) {
+            throw new RuntimeException("Test \"getArrDuplicateStatistic\" not passed!");
         }
 
+        Phonebook phonebook = new Phonebook();
+        phonebook.add("Vlad","8800222");
+        phonebook.add("Sergei","8800444");
+        phonebook.add("Vlad","5555555");
+
+        if (phonebook.get("Vlad").size() != 2 ||
+                phonebook.get("Sergei").size() != 1 ||
+                    phonebook.get("Andry") != null
+        ) {
+            throw new RuntimeException("Test \"phonebook\" not passed!");
+        }
+    }
+
+    private static Map<String, Integer> getArrDuplicateStatistic(List<String> arr) {
+        if (arr == null || arr.isEmpty()) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, Integer> result = new HashMap<>();
+        for (String item : arr) {
+            int count = 0;
+            if (result.containsKey(item)) {
+                count = result.get(item);
+            }
+            result.put(item, ++count);
+        }
+        return result;
     }
 }
