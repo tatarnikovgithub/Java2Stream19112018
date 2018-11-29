@@ -18,6 +18,16 @@ public class MainClass {
       ));
       System.out.println(uWords2.getUniqueWords());
 
+      System.out.println("=====================");
+
+      PhoneBook book = new PhoneBook();
+      System.out.println(book.get("Громыко"));
+      book.add("Иванов", "+792312312");
+      book.add("Петров", "+792312315");
+      book.add("Иванов", "+7(923)123-14");
+      System.out.println(book.get("Иванов"));
+      System.out.println(book.get("Петров"));
+      System.out.println(book.get("Сидоров"));
 
 //        ArrayList<String> ali = new ArrayList<>();
 //        ali.add("A");
