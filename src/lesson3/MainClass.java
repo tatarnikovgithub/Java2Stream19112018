@@ -29,6 +29,7 @@ public class MainClass {
       System.out.println(book.get("Петров"));
       System.out.println(book.get("Сидоров"));
 
+
 //        ArrayList<String> ali = new ArrayList<>();
 //        ali.add("A");
 //        ali.add("C");
@@ -98,6 +99,7 @@ public class MainClass {
 //        }
 //        System.out.println(ali);
 
+
 //        HashMap<String, Integer> hm = new HashMap<>();
 //        hm.put("A", 1);
 //        Iterator<Map.Entry<String, Integer>> iter = hm.entrySet().iterator();
@@ -106,6 +108,7 @@ public class MainClass {
 //            Map.Entry<String, Integer> e = iter.next();
 //            System.out.println(e.getKey() + " " + e.getValue());
 //        }
+
 
     }
 }
