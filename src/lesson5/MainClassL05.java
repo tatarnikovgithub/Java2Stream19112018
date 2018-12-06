@@ -1,9 +1,16 @@
 package lesson5;
 
-public class MainClass {
+public class MainClassL05 {
 //    Object mon = new Object();
 
-    public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
+
+    float[] floats = MyArrMap.fillArray(1f);
+
+    MyArrMap.mapInOneThread(floats);
+    System.out.println("---------------------------");
+    MyArrMap.mapInTwoThread(floats);
+
 //        MyThread t1 = new MyThread();
 //        MyThread t2 = new MyThread();
 //        t1.start();
@@ -119,7 +126,7 @@ public class MainClass {
 //        }
 //
 //        System.out.println(counter.value());
-//        MainClass mc = new MainClass();
+//        MainClassL05 mc = new MainClassL05();
 //        new Thread(() -> {mc.method1();}).start();
 //        new Thread(() -> {mc.method1();}).start();
 //    }
@@ -147,7 +154,6 @@ public class MainClass {
 //            }
 //            System.out.println("Synch block end");
 //        }
-
     }
-}
 
+}
