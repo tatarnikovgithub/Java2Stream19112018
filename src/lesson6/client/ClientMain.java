@@ -1,15 +1,14 @@
-package lesson6;
+package lesson6.client;
 
 import java.io.*;
+import java.net.Proxy;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
-public class Main {
+public class ClientMain {
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(8189)) {
-            System.out.println("Server started... Waiting clients");
-            Socket socket = serverSocket.accept();
+        try (Socket socket = new Socket("localhost", 8189)) {
             System.out.println("Client connected");
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
@@ -18,12 +17,11 @@ public class Main {
                 try {
                     while (true) {
                         String msg = in.readUTF();
-                        System.out.println("from client: " + msg);
-                        if (msg.equals("/end")) {
-                            socket.close();
-                            break;
-                        }
+                        System.out.println("from server: " + msg);
+                        if (msg.equals("/end")) break;
                     }
+                } catch (SocketException e) {
+                    System.out.println("Server has closed connection");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -35,15 +33,12 @@ public class Main {
                 while (true) {
                     String s = br.readLine();
                     out.writeUTF(s);
-                    if (s.equals("/end")) {
-                        socket.close();
-                        break;
-                    }
+                    if (s.equals("/end")) break;
                 }
-            } catch (SocketException e) {
-                System.out.println("Client has closed connection");
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                socket.close();
             }
 
         } catch (IOException e) {
